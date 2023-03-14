@@ -1,10 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Oswald:wght@200;300;400;600&display=swap');
-
 :root{
   --botones:'Oswald', sans-serif;
-}
+};
 
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Oswald:wght@200;300;400;600&display=swap');
 
 html{
   box-sizing: border-box;
@@ -17,7 +15,6 @@ html{
   box-sizing: inherit
   ;
 }
-
 
 body{
   margin: 0;
@@ -35,7 +32,7 @@ body{
 /******************************************************** Landing */
 
 .landing__Page{
-  background-image: linear-gradient(-45deg, rgba(219, 156, 30, 0.39), rgba(25, 197, 231, 0.39)), url('../src/img/desktop-1920x1080.jpg');
+  background-image: linear-gradient(-45deg, rgba(219, 156, 30, 0.641), rgba(25, 197, 231, 0.641)), url('../src/img/32027-negro.jpg');
   background-position: center;
   background-attachment: fixed;
   height: 100vh;
@@ -62,3 +59,10 @@ body{
 .btn-start:hover{
   background-color: yellow;
 }
+
+.pokeball{
+  
+  grid-column: 2/3;
+  grid-row:2/3
+}
+
