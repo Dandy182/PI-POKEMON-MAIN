@@ -1,13 +1,64 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Oswald:wght@200;300;400;600&display=swap');
+
+:root{
+  --botones:'Oswald', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+
+html{
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+*, 
+*:after,
+*:before{
+  box-sizing: inherit
+  ;
+}
+
+
+body{
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+
+.btn{
+  padding:.5rem 1rem;
+  cursor: pointer;
+}
+
+
+
+/******************************************************** Landing */
+
+.landing__Page{
+  background-image: linear-gradient(-45deg, rgba(219, 156, 30, 0.39), rgba(25, 197, 231, 0.39)), url('../src/img/desktop-1920x1080.jpg');
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.btn-start{
+  font-family: var(--botones);
+  font-size: 2.5rem;
+  text-align: center;
+  background-color: rgba(195, 31, 31, 0.782);
+  border: none;
+  grid-column: 2/3;
+  grid-row: 4/5;
+  justify-self: center;
+};
+
+.btn-start:hover{
+  background-color: yellow;
 }
