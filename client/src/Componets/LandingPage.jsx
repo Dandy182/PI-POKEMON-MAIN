@@ -1,13 +1,16 @@
 import React from "react";
-import pokeball from '../img/Poké_Ball_icon.svg';
-//import { Link } from "react-router-dom";
-import '../index.css'
+import logo from "../img/pngegg.png"
+import { NavLink } from "react-router-dom";
 
 export default function Landing(){
 
 
-  return(<div className="landing__Page">
-    <img src={pokeball} className="pokeball" alt="pokeball" />
-    <button className="btn btn-start">Start</button>
+  return(<div className="landing">
+  <div className="landing__center">
+    <img src={logo} alt="logo" />
+    <NavLink to="/home">
+    <div className="btn btn__landing">Ingresar</div>
+    </NavLink>
+  </div>
   </div>)
 }

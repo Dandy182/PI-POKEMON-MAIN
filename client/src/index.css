@@ -21,48 +21,54 @@ body{
   font-size: 1.2rem;
 }
 
-
-.btn{
-  padding:.5rem 1rem;
-  cursor: pointer;
+img{
+  max-width: 100%;
+  display: block;
 }
 
-
-
-/******************************************************** Landing */
-
-.landing__Page{
-  background-image: linear-gradient(-45deg, rgba(219, 156, 30, 0.641), rgba(25, 197, 231, 0.641)), url('../src/img/32027-negro.jpg');
-  background-position: center;
-  background-attachment: fixed;
-  height: 100vh;
-  display: grid;
-  grid-template-rows: repeat(5, 1fr);
-  grid-template-columns: repeat(3, 1fr);
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.contenedor{
+  width: 1000px;
+  margin: 0 auto;
+  max-width: 95%;
 }
 
-
-.btn-start{
+a{
+  display: inline-block;
+  text-decoration: none;
   font-family: var(--botones);
-  font-size: 2.5rem;
-  text-align: center;
-  background-color: rgba(195, 31, 31, 0.782);
-  border: none;
-  grid-column: 2/3;
-  grid-row: 4/5;
-  justify-self: center;
-};
+  transition: all .4s ease-in;
+}
 
-.btn-start:hover{
+a .btn__landing:hover{
   background-color: yellow;
+  color:red;
 }
 
-.pokeball{
-  
-  grid-column: 2/3;
-  grid-row:2/3
+
+/********************************************************** landing*/
+.landing{
+  background-image: url('../src//img/45651.jpg') ;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
+
+.landing__center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+
+
+.btn__landing{
+  padding:.5rem 1.5rem;
+  font-size: 2.5rem;
+  background-color: rgb(219, 40, 40);
+  border-radius: 30px;
+  color: white
+};
 
