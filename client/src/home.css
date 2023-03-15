@@ -1,0 +1,9 @@
+.home{
+    
+}
+
+img.headBar__logo{
+    max-width: 20%;
+    padding:.5rem 0;
+    background-color: rgba(255, 0, 0, 0.418);
+  }
