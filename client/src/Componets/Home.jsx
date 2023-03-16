@@ -1,15 +1,17 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Logo from "../img/pngegg.png";
-import "../home.css"
+import '../css/home.css';
+import Search from "./searchBar";
 
 export default function Home(){
 
     return(<div className="homePage">
         <div className="headBar">
-            <div className="contenedor">
-                <Link to='/'>
+            <div className="contenedor hb">
+                <NavLink to='/' className='logoMin'>
                     <img src={Logo} className='headBar__logo' alt="logo" />
-                </Link>
+                </NavLink>
+                <Search />
             </div>
         </div>
 

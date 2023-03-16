@@ -1,0 +1,47 @@
+.homePage{
+  background-image: linear-gradient( rgba(53, 49, 49, 0.452), rgba(26, 99, 112, 0.452) ), url('../img/wallpaperflare.com_wallpaper.jpg');
+  height: 100vh;
+}
+
+
+.headBar{
+  background-color: rgba(20, 73, 218, 0.678);
+}
+
+.hb{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:2rem;
+  padding:1rem 0;
+}
+
+@media only screen and (min-width:768px){
+
+  .hb{
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.headBar__logo{
+  max-width: 200px;
+}
+
+.searchBar{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.bar{
+  border-radius: 20px;
+  border: none;
+  background-color: var(--amarillo);
+  padding: .5rem ;
+  color: white;
+}
+
+::placeholder{
+  color:white;
+}

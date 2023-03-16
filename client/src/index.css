@@ -1,5 +1,7 @@
 :root{
   --botones:'Oswald', sans-serif;
+  --blanco:white;
+  --amarillo:rgb(255, 203, 5);
 };
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Oswald:wght@200;300;400;600&display=swap');
@@ -40,8 +42,8 @@ a{
 }
 
 a .btn__landing:hover{
-  background-color: yellow;
-  color:red;
+  background-color: var(--amarillo);
+
 }
 
 
@@ -69,8 +71,6 @@ a .btn__landing:hover{
   font-size: 2.rem;
   background-color: rgb(219, 40, 40);
   border-radius: 30px;
-  color: white
+  color: var(--blanco);
 };
-
-/********************************************************** home*/
 
