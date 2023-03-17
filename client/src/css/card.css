@@ -1,0 +1,13 @@
+.card{
+  background-color: var(--head__bg);
+  border-radius: 15px;
+  max-width: 12rem;
+  height: 15rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.card h2{
+  color: white;
+  border-bottom: 2px solid var(--amarillo);
+}

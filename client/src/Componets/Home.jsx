@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import Logo from "../img/pngegg.png";
 import '../css/home.css';
 import Search from "./searchBar";
+import Cards from "./Cards";
 
 export default function Home(){
 
@@ -15,6 +16,7 @@ export default function Home(){
             </div>
         </div>
 
+            <Cards />
 
         
     </div>)

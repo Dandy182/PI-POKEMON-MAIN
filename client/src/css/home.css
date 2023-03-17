@@ -5,7 +5,7 @@
 
 
 .headBar{
-  background-color: rgba(20, 73, 218, 0.678);
+  background-color: var(--head__bg);
 }
 
 .hb{
@@ -39,9 +39,11 @@
   border: none;
   background-color: var(--amarillo);
   padding: .5rem ;
-  color: white;
+  color: gray;
+  font-weight: 500;
+  font-family: var(--texto__inputs);
 }
 
 ::placeholder{
-  color:white;
+  color:black;
 }

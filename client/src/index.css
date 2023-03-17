@@ -1,7 +1,10 @@
 :root{
   --botones:'Oswald', sans-serif;
+  --texto__inputs:'Open Sans', sans-serif;
+  --otros__textos:'Montserrat', sans-serif;
   --blanco:white;
   --amarillo:rgb(255, 203, 5);
+  --head__bg:rgba(20, 73, 218, 0.678);
 };
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Oswald:wght@200;300;400;600&display=swap');
@@ -23,11 +26,25 @@ body{
   font-size: 1.2rem;
 }
 
+h2{
+  margin: 0;
+  font-family: var(--botones);
+  font-weight: 400;
+  text-align: center;
+}
+
 img{
   max-width: 100%;
   display: block;
 }
 
+p{
+  font-family: var(--otros__textos);
+}
+
+span{
+  font-weight: bold;
+}
 .contenedor{
   width: 1000px;
   margin: 0 auto;
