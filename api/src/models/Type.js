@@ -1,4 +1,4 @@
-import { DataTypes } from "sequelize";
+const { DataTypes }= require('sequelize');
 
 module.exports = (sequelize) => {
 
@@ -7,5 +7,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull:false
     }
-  });
+  },
+  {freezeTableName:true})
 };
