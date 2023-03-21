@@ -6,14 +6,14 @@ const getDataApi = async () =>{
         const allPokemons = [];
         
         const ReqApiPokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=5`);
-        const urlPokemon = await ReqApiPokemon.data.results.map(p => p.url);
+        const urlPokemons = await ReqApiPokemon.data.results.map(p => p.url);
 
-         const requestAllPokemon = await axios.all(urlPokemon.map(p => axios.get(urlPokemon)));
-         const dataAllPokemon = requestAllPokemon.map(pkmnsFound =>{
-            
-         })
+        await axios.all(urlPokemons.map((urlPokemon) => axios.get(urlPokemon))).then(
+          (data) => console.log(data)
+          );
 
-         return dataAllPokemon;
+
+
     }catch(error){
         throw new Error(error);
     }
