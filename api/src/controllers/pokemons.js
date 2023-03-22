@@ -1,5 +1,6 @@
 const axios = require('axios');
 
+
 const getDataApi = async () =>{
     
     try{
@@ -10,7 +11,7 @@ const getDataApi = async () =>{
         await axios.all(urlPokemons.map((urlPokemon) => axios.get(urlPokemon))).then(
           (pokemonsFound) => {
             pokemonsFound.map(pokemonfound => allPokemons.push({
-              id:pokemonfound.data.id,
+              idApi:pokemonfound.data.id,
               name:pokemonfound.data.name,
               img:pokemonfound.data.sprites.front_default,
               hp:pokemonfound.data.stats[0].base_stat,
@@ -31,6 +32,17 @@ const getDataApi = async () =>{
     }
   }
 
+
+const getDbInfo = async () =>{
+
+  return await Pokemon.findAll({
+    include:{
+      model:Type,
+      attributes:['name'],
+    }
+  })
+
+}
 
 
 

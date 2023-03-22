@@ -11,9 +11,6 @@ const router = Router();
 
 
 router.get('/pokemons', async (req, res) =>{
-  const datos = await getDataApi();
-  console.log(datos)
-  res.json(datos);
 
 });
 // router.get('/pokemons/:idpokemon', getPokemonsId);

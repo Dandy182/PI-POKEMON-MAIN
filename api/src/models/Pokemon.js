@@ -9,6 +9,8 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4,
       primaryKey:true,
     },
+
+
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -44,6 +46,11 @@ module.exports = (sequelize) => {
 
     weigth:{
       type: DataTypes.INTEGER,
+    },
+    createInDb:{
+      type:DataTypes.BOOLEAN,
+      allowNull:false,
+      defaultValue:true
     }
 
   },
