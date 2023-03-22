@@ -33,17 +33,25 @@ const getDataApi = async () =>{
   }
 
 
-const getDbInfo = async () =>{
+const getDataDb = async () =>{
 
   return await Pokemon.findAll({
     include:{
       model:Type,
       attributes:['name'],
+      through:{attributes:[]}
     }
   })
 
 }
 
+const getAllPokemons = async () =>{
+  let apiInfo = await getDataApi();
+  let getdbInfo = await getDataDb();
+  const allData = apiInfo.concat(getdbInfo);
+
+  return allData;
+}
 
 
 
