@@ -13,10 +13,13 @@ const getDataApi = async () =>{
   const pokemon = [];
   
   const getApi = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=10000`);
-  const dataAPi = await getApi.data.results.map(p => {
-    return {
-      pkm: p.url
-    }
+  const dataAPi = await getApi.data.results.map( async p => {
+
+    const getPokemon = await axios.get(`${p.url}`)
+
+
+    console.log(getPokemon);
+    return p.url;
   })
 
   return dataAPi;
@@ -26,8 +29,7 @@ const getDataApi = async () =>{
 
 router.get('/pokemons', async (req, res) =>{
   const datos = await getDataApi();
-  const pokemon = await dataPokemon(datos);
-  res.json(pokemon);
+  res.json(datos);
 
 });
 // router.get('/pokemons/:idpokemon', getPokemonsId);
