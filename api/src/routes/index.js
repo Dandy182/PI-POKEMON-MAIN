@@ -24,12 +24,13 @@ router.get('/pokemons', async (req, res) => {
   }
 
 });
-// router.get('/pokemons/:idpokemon', getPokemonsId);
-router.get('/types', (req, res) =>{
 
-  const result = getTypes();
+router.get('/types', async (req, res) =>{
+  
+  const result = await getTypes();
   res.send(result);
 })
+// router.get('/pokemons/:idpokemon', getPokemonsId);
 // router.post('/pokemons', addPokemon)
 
 module.exports = router;
