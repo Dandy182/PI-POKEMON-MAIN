@@ -1,4 +1,5 @@
 const axios = require('axios')
+const {Pokemon} = require('../db');
 
 const getDataApi = async () =>{
 
@@ -35,6 +36,19 @@ const getDataApi = async () =>{
 }
 
 
+const dataDB = async () => {
+  const dataApi = await getDataApi()
+  const pokemonData = await dataApi.forEach(p => {
+    Pokemon.findOrCreate({
+      
+    })
+  })
+
+  return dataApi;
+
+}
+
 module.exports = {
-  getDataApi
+  getDataApi,
+  dataDB
 }
