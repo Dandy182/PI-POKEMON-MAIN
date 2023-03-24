@@ -18,10 +18,9 @@ module.exports = (sequelize) => {
 
     img:{
       type:DataTypes.STRING,
-      allowNull: false
     },
 
-    life:{
+    hp:{
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -44,7 +43,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
     },
 
-    weigth:{
+    weight:{
       type: DataTypes.INTEGER,
     },
     createInDb:{

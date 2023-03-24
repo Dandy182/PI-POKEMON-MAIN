@@ -1,70 +1,64 @@
-const axios = require('axios');
-const {Pokemon, Type} = require('../db');
+const axios = require('axios')
+const {Pokemon} = require('../db');
 
 const getDataApi = async () =>{
-    
-    try{
-        const allPokemons = [];
-        
-        const ReqApiPokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=10000`);
-        const urlPokemons = await ReqApiPokemon.data.results.map(p => p.url);
-        await axios.all(urlPokemons.map((urlPokemon) => axios.get(urlPokemon))).then(
-          (pokemonsFound) => {
-            pokemonsFound.map(pokemonfound => allPokemons.push({
-              idApi:pokemonfound.data.id,
-              name:pokemonfound.data.name,
-              img:pokemonfound.data.sprites.front_default,
-              hp:pokemonfound.data.stats[0].base_stat,
-              atk:pokemonfound.data.stats[1].base_stat,
-              def:pokemonfound.data.stats[2].base_stat,
-              speed:pokemonfound.data.stats[5].base_stat,
-              height:pokemonfound.data.height,
-              weight:pokemonfound.data.weight,
+
+  const allPokemons = [];
+  
+  try{
+  
+  const callApi = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=10000`);
+  const urlsApi = await callApi.data.results.map(p => p.url);
+
+  await axios.all(urlsApi.map(urlApi => axios.get(urlApi)))
+    .then(pokemonsFound => {
+      pokemonsFound.map(pf => allPokemons.push({
+              idApi:pf.data.id,
+              name:pf.data.name,
+              img:pf.data.sprites.other['official-artwork'].front_default,
+              hp:pf.data.stats[0].base_stat,
+              atk:pf.data.stats[1].base_stat,
+              def:pf.data.stats[2].base_stat,
+              speed:pf.data.stats[5].base_stat,
+              height:pf.data.height,
+              weight:pf.data.weight,
               createInDb:false,
-              types:pokemonfound.data.types.map((type) => type.type.name)
-            }));
-          },);
+              types:pf.data.types.map((type) => type.type.name)
+      }));
+    },);
 
-        return allPokemons;
+    return allPokemons;
 
-    }catch(error){
-        throw new Error(error);
-    }
+  }catch(error){
+    console.log(error)
   }
 
-const getPokemons = async () =>{
-  const gDataApi = await getDataApi();
-
-  console.log(gDataApi)
 }
 
 
-
-
-
-const getDataDb = async () =>{
-
-  return await Pokemon.findAll({
-    include:{
-      model:Type,
-      attributes:['name'],
-      through:{attributes:[]}
-    }
+const dataDB = async () => {
+  const dataApi = await getDataApi()
+  const pokemonData = await dataApi.forEach(p => {
+    Pokemon.findOrCreate({
+      where:{name:p.name},
+      defaults:{
+        name:p.name,
+        img:p.img,
+        hp:p.hp,
+        atk:p.atk,
+        def:p.def,
+        speed:p.speed,
+        height:p.height,
+        weight:p.weight,
+      }
+    })
   })
 
-}
+  return pokemonData;
 
-const getAllPokemons = async () =>{
-  let apiInfo = await getDataApi();
-  let getdbInfo = await getDataDb();
-  const allData = apiInfo.concat(getdbInfo);
-  getPokemons()
-
-  return allData;
 }
 
 module.exports = {
   getDataApi,
-  getDataDb,
-  getAllPokemons
+  dataDB
 }
