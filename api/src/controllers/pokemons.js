@@ -24,13 +24,23 @@ const getDataApi = async () =>{
               types:pokemonfound.data.types.map((type) => type.type.name)
             }));
           },);
-        return allPokemons;
 
+        return allPokemons;
 
     }catch(error){
         throw new Error(error);
     }
   }
+
+const getPokemons = async () =>{
+  const gDataApi = await getDataApi();
+
+  console.log(gDataApi)
+}
+
+
+
+
 
 const getDataDb = async () =>{
 
@@ -48,6 +58,7 @@ const getAllPokemons = async () =>{
   let apiInfo = await getDataApi();
   let getdbInfo = await getDataDb();
   const allData = apiInfo.concat(getdbInfo);
+  getPokemons()
 
   return allData;
 }
