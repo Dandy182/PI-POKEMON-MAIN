@@ -1,5 +1,5 @@
 const axios = require('axios')
-const {Pokemon} = require('../db');
+const {Pokemon, Type} = require('../db');
 
 const getDataApi = async () =>{
 
@@ -35,10 +35,9 @@ const getDataApi = async () =>{
 
 }
 
-
 const dataDB = async () => {
   const dataApi = await getDataApi()
-  const pokemonData = await dataApi.forEach(p => {
+  await dataApi.forEach(p => {
     Pokemon.findOrCreate({
       where:{name:p.name},
       defaults:{
@@ -54,11 +53,25 @@ const dataDB = async () => {
     })
   })
 
-  return pokemonData;
-
 }
+
+const getPokemons = async () =>{
+  return await Pokemon.findAll({
+    attributes:{ exclude:["createdAt", "updatedAt"]},
+    include:{
+      model:Type,
+      attributes:['name'],
+      through:{
+        attributes:[],
+      }
+    }
+  })
+}
+
+
 
 module.exports = {
   getDataApi,
-  dataDB
+  dataDB,
+  getPokemons
 }
