@@ -55,7 +55,7 @@ const dataDB = async () => {
 
 }
 
-const getPokemons = async () =>{
+const getAllPokemons = async () =>{
   return await Pokemon.findAll({
     attributes:{ exclude:["createdAt", "updatedAt"]},
     include:{
@@ -73,5 +73,5 @@ const getPokemons = async () =>{
 module.exports = {
   getDataApi,
   dataDB,
-  getPokemons
+  getAllPokemons
 }
