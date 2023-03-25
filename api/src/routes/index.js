@@ -14,7 +14,6 @@ const router = Router();
 
 router.get('/pokemons', async (req, res) =>{
   const {name} = req.query;
-   name.toLowerCase();
 
   try{
     await dataDB();
@@ -40,9 +39,36 @@ router.get('/pokemons', async (req, res) =>{
 
 })
 
+router.get('/pokemons/:idPokemon', async (req, res) => {
+  const id = req.params.id;
+
+  try{
+    const pokemon = await Pokemon.findAll({
+      where:{
+        id:{
+          [Op.like]:id
+        }
+      },
+      attributes:{
+        exclude:['createdAt', 'updatedAt']
+      },
+      include:{
+        model:Type,
+        attributes:{
+          exclude:['createdAt', 'updatedAt']
+        }
+      }
+    })
+
+
+  }catch(error){
+    console.log(error);
+  }
+
+})
+
 router.get('/types', async (req, res) =>{
   const types = await getTypes()
-
   res.status(200).send(types);
 })
 module.exports = router;
