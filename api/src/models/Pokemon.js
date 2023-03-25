@@ -48,8 +48,8 @@ module.exports = (sequelize) => {
     },
     createInDb:{
       type:DataTypes.BOOLEAN,
+      defaultValue:false,
       allowNull:false,
-      defaultValue:true
     }
 
   },
