@@ -56,16 +56,6 @@ const dataDB = async () => {
 }
 
 
-const findPokemon = async (data) =>{
-  let toSearch = data.toLowerCase();
-
-  const pokemonFound = Pokemon.findAll({
-    where:{name:toSearch}
-  })
-
-  return pokemonFound;
-}
-
 const getAllPokemons = async () =>{
   return await Pokemon.findAll({
     attributes:{ exclude:["createdAt", "updatedAt"]},
