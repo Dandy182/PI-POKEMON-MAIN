@@ -15,7 +15,7 @@ const getTypes = async () => {
         where:{name:t}
       })
     })
-    console.log(typesList)
+    //console.log(typesList)
     return typesList;
     
   }catch(error){

@@ -24,7 +24,14 @@ router.get('/pokemons', async (req, res) =>{
       let toSearch = name.toLowerCase();
 
       const pokemonFound = await Pokemon.findAll({
-        where:{name:toSearch}
+        where:{name:toSearch},
+        include:{
+          model:Type,
+          attributes:['name'],
+          through:{
+            attributes:[]
+          }
+        }
       })
 
       pokemonFound.length ? res.status(200).json(pokemonFound) : res.status(404).json(`Pokémon with name:${toSearch} not found`)
