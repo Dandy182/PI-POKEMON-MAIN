@@ -4,7 +4,7 @@ const { Router } = require('express');
 const {dataDB, getAllPokemons} = require('../controllers/pokemons');
 const { getTypes } = require('../controllers/type');
 const {Pokemon, Type} = require('../db');
-
+const {Op} = require('sequelize');
 
 
 const router = Router();
@@ -13,6 +13,21 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 router.get('/pokemons', async (req, res) =>{
+ 
+  try{
+    await dataDB();
+    await getTypes();
+    const data = await getAllPokemons()
+
+      res.status(200).json(data)
+
+  }catch(error){
+    console.log(error)
+  }
+
+})
+
+router.get('/pokemons/name', async (req, res) =>{
   const {name} = req.query;
 
   try{
@@ -24,7 +39,9 @@ router.get('/pokemons', async (req, res) =>{
       let toSearch = name.toLowerCase();
 
       const pokemonFound = await Pokemon.findAll({
-        where:{name:toSearch},
+        where:{
+          name:toSearch
+        },
         include:{
           model:Type,
           attributes:['name'],
@@ -34,7 +51,7 @@ router.get('/pokemons', async (req, res) =>{
         }
       })
 
-      pokemonFound.length ? res.status(200).json(pokemonFound) : res.status(404).json(`Pokémon with name:${toSearch} not found`)
+      pokemonFound.length ? res.status(200).json(pokemonFound) : res.status(404).json(`Pokémon with name: ${toSearch} not found`)
     
     }else{
       res.status(200).json(data);
@@ -46,11 +63,13 @@ router.get('/pokemons', async (req, res) =>{
 
 })
 
-router.get('/pokemons/:idPokemon', async (req, res) => {
-  const id = req.params.id;
 
+router.get('/pokemons/:id', async (req, res) => {
+  let id = req.params.id;
+
+  console.log(id)
   try{
-    const pokemon = await Pokemon.findAll({
+    const pokemonFound = await Pokemon.findAll({
       where:{
         id:{
           [Op.like]:id
@@ -67,6 +86,7 @@ router.get('/pokemons/:idPokemon', async (req, res) => {
       }
     })
 
+      pokemonFound.length ? res.status(200).json(pokemonFound) : res.status(404).json(`Pokémon with name:${toSearch} not found`)
 
   }catch(error){
     console.log(error);
