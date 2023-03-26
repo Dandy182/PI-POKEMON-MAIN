@@ -42,6 +42,9 @@ router.get('/pokemons/name', async (req, res) =>{
         where:{
           name:toSearch
         },
+        attributes:{
+          exclude:["createdAt", "updatedAd"],
+        },
         include:{
           model:Type,
           attributes:['name'],
@@ -63,17 +66,14 @@ router.get('/pokemons/name', async (req, res) =>{
 
 })
 
-
 router.get('/pokemons/:id', async (req, res) => {
   let id = req.params.id;
 
-  console.log(id)
+  //console.log(id)
   try{
     const pokemonFound = await Pokemon.findAll({
       where:{
-        id:{
-          [Op.like]:id
-        }
+        id:id
       },
       attributes:{
         exclude:['createdAt', 'updatedAt']
@@ -86,7 +86,7 @@ router.get('/pokemons/:id', async (req, res) => {
       }
     })
 
-      pokemonFound.length ? res.status(200).json(pokemonFound) : res.status(404).json(`Pokémon with name:${toSearch} not found`)
+      pokemonFound.length ? res.status(200).json(pokemonFound) : res.status(404).json(`Pokémon with id: ${id} do not exist`)
 
   }catch(error){
     console.log(error);
@@ -94,8 +94,41 @@ router.get('/pokemons/:id', async (req, res) => {
 
 })
 
+router.post('/pokemons', async (req, res) =>{
+  let { name, img, hp, atk, def, speed, height, weight, type} = req.body; 
+
+  try{
+    let newPokemon = await Pokemon.create({
+      name,
+      img,
+      hp,
+      atk,
+      def,
+      speed,
+      height,
+      createInDb:true,
+      weight,
+    })
+
+    let typeDb = await Type.findAll({
+      where:{
+        name: type
+      }
+    })
+
+    newPokemon.addType(typeDb)
+
+    res.status(200).send(`Pokémon Created`)
+
+  }catch(error){
+    console.log(error);
+  }
+  })
+
 router.get('/types', async (req, res) =>{
   const types = await getTypes()
   res.status(200).send(types);
 })
+
+
 module.exports = router;

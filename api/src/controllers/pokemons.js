@@ -51,30 +51,10 @@ const dataDB = async () => {
         weight:p.weight,
       }
     })
+
   })
 
 }
-
-const getPokemonByParams = async (where, dato) => {
-
-  const pokemon =  await Pokemon.findAll({
-    where:{
-      id:{
-        [Op.like]:id
-      }
-    },
-    attributes:{
-      exclude:['createdAt', 'updatedAt']
-    },
-    include:{
-      model:Type,
-      attributes:{
-        exclude:['createdAt', 'updatedAt']
-      }
-    }
-  })
-}
-
 
 const getAllPokemons = async () =>{
   return await Pokemon.findAll({
