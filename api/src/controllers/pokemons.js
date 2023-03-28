@@ -52,8 +52,8 @@ const dataDB = async () => {
       }
     })
 
-  })
 
+  })
 }
 
 const getAllPokemons = async () =>{
