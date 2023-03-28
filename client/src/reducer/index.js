@@ -2,11 +2,11 @@
 
 export default function rootReducer(state = {value:0}, action ){
 
-  switch(action.type){
+  // switch(action.type){
     
 
 
-    default:
-      return state;
-  }
+  //   default:
+  //     return state;
+  // }
 }

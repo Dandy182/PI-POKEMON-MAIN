@@ -68,6 +68,7 @@ a .btn__landing:hover{
 .landing{
   background-image: url('../src//img/45651.jpg') ;
   height: 100vh;
+  overflow-x: scroll;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;

@@ -1,6 +1,7 @@
 .homePage{
   background-image: linear-gradient( rgba(53, 49, 49, 0.452), rgba(26, 99, 112, 0.452) ), url('../img/wallpaperflare.com_wallpaper.jpg');
   height: 100vh;
+  overflow:scroll;
 }
 
 
