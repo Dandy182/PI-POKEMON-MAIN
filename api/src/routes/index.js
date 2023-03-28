@@ -4,7 +4,7 @@ const { Router } = require('express');
 const {dataDB, getAllPokemons} = require('../controllers/pokemons');
 const { getTypes } = require('../controllers/type');
 const {Pokemon, Type} = require('../db');
-const {Op} = require('sequelize');
+
 
 
 const router = Router();
