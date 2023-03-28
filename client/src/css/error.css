@@ -1,0 +1,19 @@
+.backgroundError{
+ height: 100vh;
+text-align: center;
+background-image: url('../img/snorlax404.jpg');
+background-position: center center;
+background-size: 76%;
+background-repeat: no-repeat;
+overflow-x: scroll;
+display: flex;
+flex-direction: column;
+font-family: var(--otros__textos);
+justify-content: space-between;
+}
+
+.backgroundError h1{
+  background-color: var(--amarillo);
+  margin: 0;
+  padding:.7rem;
+}
