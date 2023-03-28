@@ -1,15 +1,27 @@
+.Error{
+  height: 100vh;
+}
+
+
 .backgroundError{
- height: 100vh;
-text-align: center;
-background-image: url('../img/snorlax404.jpg');
-background-position: center center;
-background-size: 50%;
-background-repeat: no-repeat;
-overflow-x: scroll;
-display: flex;
-flex-direction: column;
-font-family: var(--otros__textos);
-justify-content: space-between;
+  height:84vh;
+  text-align: center;
+  background-image: url('../img/snorlax404.jpg');
+  background-position: center center; 
+  background-size: 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--otros__textos);
+  justify-content: space-between;
+}
+
+@media only screen and (min-width:768px){
+  
+  .backgroundError{
+    background-size: 55%;
+  }
+
 }
 
 .backgroundError h1{
