@@ -13,11 +13,13 @@ const getTypes = async () => {
     typesList.forEach(t =>{
       Type.findOrCreate({
         where:{name:t}
-      })
+      },
+      )
     })
     //console.log(typesList)
 
-    const dataTypes = Type.findAll()
+    const dataTypes = Type.findAll({
+    })
     return dataTypes;
     
   }catch(error){

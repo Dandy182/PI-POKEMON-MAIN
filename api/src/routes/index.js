@@ -18,8 +18,9 @@ router.get('/pokemons', async (req, res) =>{
     // await dataDB();
     // await getTypes();
     const data = await getAllPokemons()
-
-      res.status(200).json(data)
+    await getTypes();
+    
+    res.status(200).json(data)
 
   }catch(error){
     console.log(error)
@@ -73,7 +74,7 @@ router.get('/pokemons/:id', async (req, res) => {
   //console.log(id)
   try{
     const data =  await getAllPokemons();
-    pokemonFound = await data.filter(p => p.id)
+    pokemonFound = await data.filter(p => p.id == id)
       pokemonFound.length ? res.status(200).json(pokemonFound) : res.status(404).json(`Pokémon with id: ${id} do not exist`)
 
   }catch(error){
