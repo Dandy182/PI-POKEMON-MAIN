@@ -13,7 +13,7 @@ const getDataApi = async () =>{
   await axios.all(urlsApi.map(urlApi => axios.get(urlApi)))
     .then(pokemonsFound => {
       pokemonsFound.map(pf => allPokemons.push({
-              idApi:pf.data.id,
+              id:pf.data.id,
               name:pf.data.name,
               img:pf.data.sprites.other['official-artwork'].front_default,
               hp:pf.data.stats[0].base_stat,
@@ -35,28 +35,28 @@ const getDataApi = async () =>{
 
 }
 
-const dataDB = async () => {
-  const dataApi = await getDataApi()
-  await dataApi.forEach(p => {
-    Pokemon.findOrCreate({
-      where:{name:p.name},
-      defaults:{
-        name:p.name,
-        img:p.img,
-        hp:p.hp,
-        atk:p.atk,
-        def:p.def,
-        speed:p.speed,
-        height:p.height,
-        weight:p.weight,
-      }
-    })
+// const dataDB = async () => {
+//   const dataApi = await getDataApi()
+//   await dataApi.forEach(p => {
+//     Pokemon.findOrCreate({
+//       where:{name:p.name},
+//       defaults:{
+//         name:p.name,
+//         img:p.img,
+//         hp:p.hp,
+//         atk:p.atk,
+//         def:p.def,
+//         speed:p.speed,
+//         height:p.height,
+//         weight:p.weight,
+//       }
+//     })
 
 
-  })
-}
+//   })
+// }
 
-const getAllPokemons = async () =>{
+const dataDB = async () =>{
   return await Pokemon.findAll({
     attributes:{ exclude:["createdAt", "updatedAt"]},
     include:{
@@ -67,6 +67,15 @@ const getAllPokemons = async () =>{
       }
     }
   })
+}
+
+
+const getAllPokemons = async () =>{
+  const pokemonApi = await getDataApi();
+  const pokemonDb = await dataDB();
+  const getAll = pokemonApi.concat(pokemonDb);
+  
+  return getAll;
 }
 
 

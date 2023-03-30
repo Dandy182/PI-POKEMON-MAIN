@@ -16,7 +16,9 @@ const getTypes = async () => {
       })
     })
     //console.log(typesList)
-    return typesList;
+
+    const dataTypes = Type.findAll()
+    return dataTypes;
     
   }catch(error){
     console.log(`funcion getTypes fallando en ${error}`)

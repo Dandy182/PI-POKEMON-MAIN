@@ -1,12 +1,19 @@
 
 
-export default function rootReducer(state = {value:0}, action ){
+const initialState = {pokemons:[]};
 
-  // switch(action.type){
+export default function rootReducer(state = initialState, action ){
+
+   switch(action.type){
+    case'GET_CHARACTERS':
+    return{
+      ...state,
+      pokemons:action.payload
+    }
     
 
 
-  //   default:
-  //     return state;
-  // }
+     default:
+       return state;
+  }
 }

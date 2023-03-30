@@ -15,8 +15,8 @@ const router = Router();
 router.get('/pokemons', async (req, res) =>{
  
   try{
-    await dataDB();
-    await getTypes();
+    // await dataDB();
+    // await getTypes();
     const data = await getAllPokemons()
 
       res.status(200).json(data)
@@ -31,34 +31,35 @@ router.get('/pokemons/name', async (req, res) =>{
   const {name} = req.query;
 
   try{
-    await dataDB();
-    await getTypes();
+    // await dataDB();
+    // await getTypes();
     const data = await getAllPokemons()
 
-    if(name){
+    // if(name){
       let toSearch = name.toLowerCase();
 
-      const pokemonFound = await Pokemon.findAll({
-        where:{
-          name:toSearch
-        },
-        attributes:{
-          exclude:["createdAt", "updatedAd"],
-        },
-        include:{
-          model:Type,
-          attributes:['name'],
-          through:{
-            attributes:[]
-          }
-        }
-      })
+      // const pokemonFound = await Pokemon.findAll({
+      //   where:{
+      //     name:toSearch
+      //   },
+      //   attributes:{
+      //     exclude:["createdAt", "updatedAd"],
+      //   },
+      //   include:{
+      //     model:Type,
+      //     attributes:['name'],
+      //     through:{
+      //       attributes:[]
+      //     }
+      //   }
+      // })
 
+      let pokemonFound = await data.filter(p => p.name.toLowerCase().includes(toSearch))
       pokemonFound.length ? res.status(200).json(pokemonFound) : res.status(404).json(`Pokémon with name: ${toSearch} not found`)
     
-    }else{
-      res.status(200).json(data);
-    }
+    // }else{
+    //   res.status(200).json(data);
+    // }
 
   }catch(error){
     console.log(error)
@@ -71,21 +72,8 @@ router.get('/pokemons/:id', async (req, res) => {
 
   //console.log(id)
   try{
-    const pokemonFound = await Pokemon.findAll({
-      where:{
-        id:id
-      },
-      attributes:{
-        exclude:['createdAt', 'updatedAt']
-      },
-      include:{
-        model:Type,
-        attributes:{
-          exclude:['createdAt', 'updatedAt']
-        }
-      }
-    })
-
+    const data =  await getAllPokemons();
+    pokemonFound = await data.filter(p => p.id)
       pokemonFound.length ? res.status(200).json(pokemonFound) : res.status(404).json(`Pokémon with id: ${id} do not exist`)
 
   }catch(error){
