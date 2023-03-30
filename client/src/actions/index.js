@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { GET_ALL } from '../types';
 
 
 export const getAllPokemons = () =>{
@@ -6,8 +7,9 @@ export const getAllPokemons = () =>{
     let json = await axios.get("http://localhost:3001/pokemons");
 
     return dispatch({
-      type:'GET_CHARACTERS',
+      type:GET_ALL,
       payload:json.data
     })
   }
 }
+
