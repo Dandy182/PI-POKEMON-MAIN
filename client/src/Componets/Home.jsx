@@ -43,7 +43,7 @@ export default function Home(){
         </div> */}
         <main className="contenedor contenido__cards">
             {   allPokemons.map(p =>{
-                    return <NavLink to=''>
+                    return <NavLink to='' className='link-card'>
                         <Card name={p.name}
                         img={p.img} 
                         type={p.types}
