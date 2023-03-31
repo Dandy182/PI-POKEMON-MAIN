@@ -1,3 +1,5 @@
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
 import { ADD_POKEMON, GET_ALL } from '../types/index';
 
 
@@ -14,6 +16,7 @@ export default function rootReducer(state = initialState, action ){
         ...state,
         payload:action.payload
       }
+
     case ADD_POKEMON:
       return{
         ...state,
