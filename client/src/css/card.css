@@ -2,12 +2,33 @@
   background-color: var(--head__bg);
   border-radius: 15px;
   max-width: 12rem;
-  height: 15rem;
+  height: 20rem;
   margin: 1rem auto;
   padding: 1rem;
+  transition: all .4s ease-in;
 }
+
 
 .card h2{
   color: white;
   border-bottom: 2px solid var(--amarillo);
+}
+
+.info__card{
+   background-color: var(--amarillo);
+  border-radius: 15px;
+  padding:.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info__card span{
+  color:var(--head__bg)
+}
+
+.info__card .dataType{
+  background-color: var(--amarillo);
+  border-radius: 15px;
+  padding:.5rem;
 }

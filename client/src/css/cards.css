@@ -8,14 +8,20 @@
   overflow-x: hidden;
 }
 
+.link-card  card:hover{
+  background-color: blueviolet;
+}
 
 @media only screen and (min-width:768px){
   
   .contenido__cards{
     display: flex;
-    gap:1rem;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
+  }
+
+  .link-card{
+    flex-basis: calc(33.3% - 1rem);
   }
 
  

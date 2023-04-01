@@ -8,7 +8,9 @@ export default function Card(props){
       <div className="marcoImg">
       <img src={img} alt={name} />
       <div className="info__card">
-        <p><span>type:</span>{type}</p>
+        <span>type:</span><div className="dataType">
+          {type.map(t =><p>{t}</p>)}
+          </div>
       </div>
     </div>
   </div>)

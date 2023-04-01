@@ -15,11 +15,13 @@ export default function Home(){
     const dispatch = useDispatch();
     const allPokemons = useSelector((state) => state.pokemons)
 
-    //console.log(allPokemons)
+    console.log(allPokemons)
     
     useEffect(() => {
         dispatch(getAllPokemons())
     }, [dispatch])
+
+
 
     return(<div className="homePage">
         <UpperBar />
@@ -43,7 +45,7 @@ export default function Home(){
         </div> */}
         <main className="contenedor contenido__cards">
             {   allPokemons.map(p =>{
-                    return <NavLink to='' className='link-card'>
+                    return <NavLink to={`/detail/${p.name}`} className='link-card'>
                         <Card name={p.name}
                         img={p.img} 
                         type={p.types}

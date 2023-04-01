@@ -20,8 +20,9 @@ export default function rootReducer(state = initialState, action ){
     case ADD_POKEMON:
       return{
         ...state,
-        payload:action.payload
+        pokemons:action.payload
       }
+    
 
 
     default:
