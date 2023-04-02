@@ -22,16 +22,18 @@ export default function Home(){
     }, [dispatch])
 
 
+    const indexPage = 0;
+
 
     return(<div className="homePage">
         <UpperBar />
-        {/* <div className="contenedor contenido__cards">
+        <div className="contenedor contenido__cards">
 
-        <NavLink to='/pokemons'>
+        <NavLink to='/pokemons' className="btn">
             Crear Pokémon
         </NavLink>
 
-        <select>
+        <select className='btn'>
             <option disabled selected>Order By</option>
             <option value='asc'>Ascendente</option>
             <option value='desc'>Desendente</option>
@@ -42,7 +44,7 @@ export default function Home(){
             <option value='api'>Api</option>
             <option value='db '>Creados</option>
         </select>
-        </div> */}
+        </div>
         <main className="contenedor contenido__cards">
             {   allPokemons.map(p =>{
                     return <NavLink to={`/detail/${p.name}`} className='link-card'>

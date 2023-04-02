@@ -8,8 +8,9 @@
   overflow-x: hidden;
 }
 
-.link-card  card:hover{
+.link-card  .card:hover{
   background-color: blueviolet;
+  transform: scale(1.1);
 }
 
 @media only screen and (min-width:768px){

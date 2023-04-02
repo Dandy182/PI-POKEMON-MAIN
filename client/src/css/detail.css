@@ -1,0 +1,9 @@
+.pokemon__detail{
+  background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.341), rgba(0, 0, 0, 0.419) ),url('../img/pokeball_simple_background_by_ashthenyan_d87b9zw-fullview.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
+

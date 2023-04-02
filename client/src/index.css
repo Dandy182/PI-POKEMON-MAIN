@@ -37,6 +37,10 @@ h2{
   text-align: center;
 }
 
+.espaciado{
+  margin-top: 2rem;
+}
+
 img{
   max-width: 100%;
   display: block;
