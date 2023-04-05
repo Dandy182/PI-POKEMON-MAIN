@@ -4,7 +4,7 @@ import '../css/home.css';
 import '../css/cards.css';
 
 import Card from "./Card";
-import {useEffect } from 'react';
+import {useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { getAllPokemons } from '../actions';
 import { NavLink } from 'react-router-dom';
@@ -15,16 +15,22 @@ export default function Home(){
     const dispatch = useDispatch();
     const allPokemons = useSelector((state) => state.pokemons)
 
-    console.log(allPokemons)
+    //console.log(allPokemons)
     
     useEffect(() => {
         dispatch(getAllPokemons())
     }, [dispatch])
 
+    const [currentPage, setCurrent] = useState(1);
+    const [pkmPerPage, setPkmnPerPage] = useState(12)
+    const indexOfLastPokemon = currentPage * pkmPerPage;
+    const indexOfFirstPkmn = indexOfLastPokemon - pkmPerPage;
+    const currentPokemons = allPokemons.slice(indexOfFirstPkmn, indexOfLastPokemon);
 
-    const indexPage = 0;
 
-
+    const paginado = (pageNumber) =>{
+        setCurrent(pageNumber)
+    }
     return(<div className="homePage">
         <UpperBar />
         <div className="contenedor contenido__cards">

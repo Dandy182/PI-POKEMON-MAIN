@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ALL } from '../types';
+import { GET_ALL, GET_POKEMON } from '../types';
 
 
 export const getAllPokemons = () =>{
@@ -12,3 +12,12 @@ export const getAllPokemons = () =>{
   }
 }
 
+export const getAllPokemon = () =>{
+  return async function(dispatch){
+
+    return dispatch({
+      type:GET_POKEMON,
+      payload:1
+    })
+  }
+}
