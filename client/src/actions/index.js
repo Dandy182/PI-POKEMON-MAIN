@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ALL, GET_POKEMON } from '../types';
+import { FILTER_ORIGIN, GET_ALL, GET_POKEMON } from '../types';
 
 
 export const getAllPokemons = () =>{
@@ -12,12 +12,14 @@ export const getAllPokemons = () =>{
   }
 }
 
-export const getAllPokemon = () =>{
-  return async function(dispatch){
 
-    return dispatch({
-      type:GET_POKEMON,
-      payload:1
-    })
-  }
+export const filterByOrigen = (payload) =>{
+ return function(dispatch){
+
+
+  return dispatch({
+    type:FILTER_ORIGIN,
+    payload:payload
+  })
+ } 
 }

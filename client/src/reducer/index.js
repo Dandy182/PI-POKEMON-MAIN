@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { ADD_POKEMON, GET_ALL } from '../types/index';
+import { ADD_POKEMON, FILTER_ORIGIN, GET_ALL } from '../types/index';
 
 
 
@@ -17,12 +17,14 @@ export default function rootReducer(state = initialState, action ){
         pokemons:action.payload
       }
 
-    case ADD_POKEMON:
+    case FILTER_ORIGIN:
+      const allPokemons = state.pokemons;
+      const dataFiltered = action.payload === 'API' ? allPokemons : allPokemons.filter(p => p.createInDb === action.payload) 
+      
       return{
         ...state,
-        pokemons:action.payload
+        pokemons:dataFiltered
       }
-    
 
 
     default:

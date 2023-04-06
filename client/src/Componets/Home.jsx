@@ -54,7 +54,7 @@ export default function Home(){
 
         <UpperBar />
         
-        {/* <div className="contenedor contenido__cards">
+         <div className="contenedor contenido__cards">
 
         <NavLink to='/pokemons' className="btn">
             Crear Pokémon
@@ -72,13 +72,14 @@ export default function Home(){
             <option value='db '>Creados</option>
         </select>
         
-        </div> */}
-        <div className='contenedor'>
+        </div>
+        
+        <div className='contenedor paginateModule'>
             <button onClick={handlePrev}>
                 Prev
             </button>
             <Page allPokemons={allPokemons} pkmnsXPage={pkmnsXPage} paginate={paginate} currentPage={currentPage}  />
-            <button onClick={handleNext}>
+            <button  onClick={handleNext}>
                 Next
             </button>
         </div>
