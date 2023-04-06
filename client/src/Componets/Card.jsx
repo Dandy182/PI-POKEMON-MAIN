@@ -6,7 +6,7 @@ export default function Card(props){
   return(<div className="card">
     <h2>{name}</h2>
       <div className="marcoImg">
-      <img src={img} alt={name} />
+      <img className="cardImg" src={img} alt={name} />
       <div className="info__card">
         <span>type:</span><div className="dataType">
           {type.map(t =><p>{t}</p>)}

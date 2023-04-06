@@ -1,0 +1,18 @@
+
+.paginate ul{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.paginateBtn{
+  background-color: none;
+  border: none;
+  width: 2rem;
+  background: rgba(246, 247, 248, 0.266);
+}
+
+.paginateBtn:hover{
+  background-color: var(--rojo);
+}
