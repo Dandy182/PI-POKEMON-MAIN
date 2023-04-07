@@ -18,8 +18,8 @@ export default function Page({allPokemons, pkmnsXPage, paginate, currentPage }){
   
   const numsList = pageNumbers.slice(indexStartPage, indexLastInPage); 
 
-  const handleNext = () =>{
 
+  const handleNext = () =>{
     if(numsList.length === numXpage){
       setCurrentList(currentList + 1)
     }
@@ -45,10 +45,11 @@ export default function Page({allPokemons, pkmnsXPage, paginate, currentPage }){
           <button className="paginateBtn" onClick={() => paginate(p)}>{p}</button>
         </li>)
       }
-      
+
       <li>
         <button className="paginateBtn" onClick={() => handleNext()}>...</button>
       </li>
     </ul>
   </div>)
+  
 }
