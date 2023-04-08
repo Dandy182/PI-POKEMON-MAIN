@@ -49,4 +49,52 @@
   color:black;
 }
 
+.filters{
+  display: flex;
+}
 
+@media only screen and (min-width:768px){
+
+  .filters{
+    gap:1rem;
+    align-items: center;
+  }
+
+  .filters div:last-of-type{
+    margin-right: 1rem;
+  }
+}
+
+
+.filters label{
+  font-family: var(--otros__textos);
+  font-size: 1rem;
+  line-height: .5;
+}
+
+.filters select{
+  text-align: center;
+  background-color: var(--amarillo);
+  border:none;
+  border-radius: 15px;
+  margin-left: .5rem;
+  padding: .5rem;
+}
+
+.newPkmn{
+  background-color: var(--amarillo);
+  display: block;
+  padding: .5rem 1rem;
+  border-radius: 15px;
+  margin: 0 1rem;
+}
+
+.newPkmn:hover{
+  background-color: var(--rojo);
+}
+
+@media only screen and (min-width:768px){
+  .newPkmn{
+    margin-right: 0;
+  }
+}

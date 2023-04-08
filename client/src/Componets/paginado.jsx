@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import '../css/paginado.css';
 
 
-export default function Page({allPokemons, pkmnsXPage, paginate, currentPage }){
+export default function Page({allPokemons, pkmnsXPage, paginate}){
   const pageNumbers = [];
 
   for(let i = 1; i <= Math.ceil(allPokemons.length / pkmnsXPage); i++){

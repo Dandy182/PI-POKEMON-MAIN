@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { FILTER_ORIGIN,  GET_ALL, GET_TYPES, ORD_NAME } from '../types/index';
+import { FILTER_ATK, FILTER_ORIGIN,  GET_ALL, GET_TYPES, ORD_NAME } from '../types/index';
 
 
 
@@ -60,6 +60,31 @@ export default function rootReducer(state = initialState, action ){
         pokemons: pkmnsOrdByName
       }
 
+    case FILTER_ATK:
+      let pkmnsOrdByAtk = action.payload === 'weak' ?
+      state.pokemons.sort(function(a, b){
+        if(a.atk > b.atk){
+          return 1
+        }
+        if(b.atk > a.atk){
+          return -1
+        } 
+        return 0
+      }) : state.pokemons.sort(function(a, b){
+        if(a.atk > b.atk){
+          return -1
+        }
+        if(b.atk > a.atk){
+          return 1
+        }
+
+        return 0;
+      });
+
+      return{
+        ...state,
+        pokemons:pkmnsOrdByAtk
+      }
 
     default:
       return state;
