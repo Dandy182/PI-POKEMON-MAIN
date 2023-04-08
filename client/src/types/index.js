@@ -5,4 +5,4 @@ export const ASC = 'ORD_ASC'
 export const DESC = 'ORD_DESC'
 export const GET_POKEMON ="GET_POKEMON";
 export const FILTER_ORIGIN = "FILTER_ORIGIN";
-export const FILTER_TYPE = "FILTER_TYPE";
+export const GET_TYPES = "GET_TYPES";
