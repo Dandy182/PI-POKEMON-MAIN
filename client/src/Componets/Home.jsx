@@ -7,7 +7,7 @@ import '../css/cards.css';
 import Card from "./Card";
 import {useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { getAllPokemons, filterByOrigin} from '../actions';
+import { getAllPokemons, filterByOrigin, filterByOrder} from '../actions';
 import { NavLink } from 'react-router-dom';
 import Page from './paginado';
 
@@ -31,6 +31,7 @@ export default function Home(){
     const pokemonsCurrent = allPokemons.slice(indexFirstInPage, indexLastInPage);
     const paginate = (numero) =>{setCurrentPage(numero)}
 
+    const [order, setOrder] = useState('');
 
     const handlePrev = (e) => {
         e.preventDefault();
@@ -53,6 +54,15 @@ export default function Home(){
         dispatch(filterByOrigin(e.target.value));
     }
 
+    const handleOrderByName = (e) =>{
+        e.preventDefault();
+        dispatch(filterByOrder(e.target.value))
+        setCurrentPage(1)
+        setOrder(`Order ${e.target.value}`)
+    }
+
+    
+
 
     return(<div className="homePage">
 
@@ -66,17 +76,22 @@ export default function Home(){
 
 
         <form>
-            <select className='btn'>
-                <option value='asc'>Ascendente</option>
-                <option value='desc'>Desendente</option>
-            </select>
+            <div>
+                <label htmlFor="orderName">Order by Name: </label>
+                <select className='btn' name='orderName' onChange={e => handleOrderByName(e)}>
+                    <option value='asc'>Ascendente</option>
+                    <option value='desc'>Desendente</option>
+                </select>
+            </div>
 
-
-            <select onChange={e=> handleFilterByOrigin(e)} >
-                <option value='all'>All</option>
-                <option value='api'>Api</option>
-                <option value='created'>Created</option>
-            </select>
+            <div>
+                <label htmlFor='OrdOrigin'>Filter by Origin</label>
+                <select name='OrdOrigin' onChange={e => handleFilterByOrigin(e)} >
+                    <option value='all'>All</option>
+                    <option value='api'>Api</option>
+                    <option value='created'>Created</option>
+                </select>
+            </div>
          </form>
 
         </div> {/* fin filtros */}
