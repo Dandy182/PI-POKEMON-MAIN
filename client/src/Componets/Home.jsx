@@ -7,7 +7,7 @@ import '../css/cards.css';
 import Card from "./Card";
 import {useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { getAllPokemons, filterByOrigin, filterByOrder, filterByAtk} from '../actions';
+import { getAllPokemons, filterByOrigin, filterByOrder, filterByAtk, getTypes} from '../actions';
 import { NavLink } from 'react-router-dom';
 import Page from './paginado';
 
@@ -17,13 +17,15 @@ export default function Home(){
     const dispatch = useDispatch();
     const allPokemons = useSelector((state) => state.pokemons)
     //const allTypes = useSelector((state) => state.types);
-     console.log(allPokemons)
+    console.log(allPokemons)
     // console.log(allTypes)
     
     useEffect(() => {
-        dispatch(getAllPokemons())
+        dispatch(getAllPokemons());
+        dispatch(getTypes())
     }, [dispatch])
 
+    // eslint-disable-next-line no-unused-vars
     const [order, setOrder] = useState('');
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -76,7 +78,7 @@ export default function Home(){
         
          <div className="contenedor contenido__cards upperPanel">
 
-        <NavLink to='/pokemons' className="newPkmn">
+        <NavLink to='/create' className="newPkmn">
             Crear Pokémon
         </NavLink>
 
@@ -85,8 +87,8 @@ export default function Home(){
             <div>
                 <label htmlFor="orderName">Order by Name: </label>
                 <select className='btn' name='orderName' onChange={e => handleOrderByName(e)}>
-                    <option value='asc'>Ascendente</option>
-                    <option value='desc'>Desendente</option>
+                    <option value='asc'>Ascending</option>
+                    <option value='desc'>Descending</option>
                 </select>
             </div>
 

@@ -8,7 +8,7 @@ import Logo from "../img/pngegg.png";
 
     return(<div className="headBar">
     <div className="contenedor hb">
-        <NavLink to='/' className='logoMin'>
+        <NavLink to='/home' className='logoMin'>
             <img src={Logo} className='headBar__logo' alt="logo" />
         </NavLink>
         <Search />
