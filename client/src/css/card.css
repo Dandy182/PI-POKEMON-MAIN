@@ -2,10 +2,15 @@
   background-color: var(--head__bg);
   border-radius: 15px;
   max-width: 13rem;
+  margin: 0 auto;
   height: 25rem;
   margin: 1rem auto;
   padding: 1rem;
   transition: all .4s ease-in;
+}
+
+.card.new{
+  margin: 0;
 }
 
 img.cardImg{

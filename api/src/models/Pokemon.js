@@ -53,5 +53,5 @@ module.exports = (sequelize) => {
     }
 
   },
-  {freezeTableNames:true});
+  {freezeTableName:true});
 };

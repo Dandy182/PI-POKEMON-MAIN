@@ -98,7 +98,7 @@ export default function rootReducer(state = initialState, action ){
       }
 
     case FILTER_TYPE:
-      let pType = state.allPokemons.filter(p => p.types.includes(action.payload))
+      let pType = state.allPokemons.filter(p => p.type.includes(action.payload))
 
 
     return{

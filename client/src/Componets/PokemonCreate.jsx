@@ -1,7 +1,7 @@
-import React, { /*useEffect*/ useState} from "react";
+import React, { useEffect, useState} from "react";
 import { Link, useHistory } from "react-router-dom";
-import { postPokemon, /*getTypes*/ } from "../actions";
-import { useDispatch, /*useSelector*/ } from "react-redux";
+import { postPokemon, getTypes } from "../actions";
+import { useDispatch, useSelector } from "react-redux";
 import '../index.css'
 import '../css/pokemonCreate.css'
 import UpperBar from "./upperBar";
@@ -13,7 +13,7 @@ import NewPokemon from "./CardCreate";
 export default function PokemonCreate(){
   const history = useHistory();
   const dispatch = useDispatch();
-  // const types = useSelector(state => state.types);
+  const types = useSelector(state => state.types);
 
   const [input, setInput] = useState({
     name:'',
@@ -27,9 +27,9 @@ export default function PokemonCreate(){
     type:[]
   })
 
-  // useEffect(()=>{
-  //   dispatch(getTypes())
-  // },[dispatch])
+  useEffect(()=>{
+    dispatch(getTypes())
+  },[])
 
 
   const handleChange = (e) =>{
@@ -59,6 +59,9 @@ export default function PokemonCreate(){
     <div className="contenedor createPokemon">
 
         <h1>CREATE NEW POKÉMON</h1>
+  <div className="flex">
+
+  
     <form className="formulario" onSubmit={e => handleCreate(e)}>
       <div className="create__formulario"> 
       <div className="camp">
@@ -194,8 +197,8 @@ export default function PokemonCreate(){
       <button type="submit">Create Pokéomon</button>
 
     </form>
-
       <NewPokemon name={input.name} img={input.img} hp={input.hp} atk={input.atk} speed={input.speed} height={input.height} weight={input.weight}  type={input.type}/>
+  </div>
     
   </div>
   </div>)

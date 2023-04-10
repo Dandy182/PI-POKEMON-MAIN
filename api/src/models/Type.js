@@ -10,5 +10,5 @@ module.exports = (sequelize) => {
       allowNull:false
     }
   },
-  {freezeTableName:true,})
+  {freezeTableName:true})
 };

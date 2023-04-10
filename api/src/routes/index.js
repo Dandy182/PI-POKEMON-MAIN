@@ -16,6 +16,7 @@ router.get('/pokemons', async (req, res) =>{
  
   try{
     // await dataDB();
+    // await getTypes();
     const data = await getAllPokemons()
     await getTypes();
     
@@ -32,6 +33,7 @@ router.get('/pokemons/name', async (req, res) =>{
 
   try{
     // await dataDB();
+    // await getTypes();
     const data = await getAllPokemons()
 
     // if(name){
@@ -113,8 +115,8 @@ router.post('/pokemons', async (req, res) =>{
   })
 
 router.get('/types', async (req, res) =>{
-  const types = await getTypes()
-  res.status(200).send(types);
+  const type = await getTypes()
+  res.status(200).send(type);
 })
 
 

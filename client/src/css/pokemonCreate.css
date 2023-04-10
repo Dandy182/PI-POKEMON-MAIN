@@ -8,23 +8,47 @@
   overflow-x: hidden;
 }
 
-.formulario h1{
+.createPokemon h1{
   font-family: var(--otros__textos);
+}
+
+.flex{
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+@media only screen and (min-width:768px){
+  .flex{
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1rem
+  }
 }
 
 .formulario{
   background-color:  rgba(246, 247, 248, 0.266);
-  margin:2rem ;
+  margin: 0 2rem ;
+  margin-bottom: 2rem;
   padding: 1rem;
   border-radius: 15px ;
+  width: 300px;
 }
 
-@media only screen and (min-width:820px){
-  
-  .formulario{
-    max-width: 30%;
-  }
 
+.skills{
+  color:var(--blanco);
+  align-items: left;
+  font-family: var(--otros__textos);
+  font-size: 1rem;
+  padding: .5rem;
+}
+
+.skills div{
+  display: flex;
 }
 
 label{

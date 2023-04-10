@@ -158,7 +158,7 @@ export default function Home(){
                 return <NavLink to={`/detail/${p.name}`} className='link-card' key={p.id}>
                         <Card name={p.name}
                         img={p.img} 
-                        type={p.type}
+                        type={p.type ? p.type : p.types}
                         />
                     </NavLink>
                 })
