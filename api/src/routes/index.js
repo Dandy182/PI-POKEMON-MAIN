@@ -16,7 +16,6 @@ router.get('/pokemons', async (req, res) =>{
  
   try{
     // await dataDB();
-    // await getTypes();
     const data = await getAllPokemons()
     await getTypes();
     
@@ -33,7 +32,6 @@ router.get('/pokemons/name', async (req, res) =>{
 
   try{
     // await dataDB();
-    // await getTypes();
     const data = await getAllPokemons()
 
     // if(name){

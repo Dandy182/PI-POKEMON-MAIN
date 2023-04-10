@@ -12,19 +12,46 @@
   font-family: var(--otros__textos);
 }
 
-.camp{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap:1rem;
+.formulario{
+  background-color:  rgba(246, 247, 248, 0.266);
+  margin:2rem ;
+  padding: 1rem;
+  border-radius: 15px ;
 }
 
+@media only screen and (min-width:820px){
+  
+  .formulario{
+    max-width: 30%;
+  }
 
-.types{
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+}
+
+label{
+  font-family: var(--botones);
+  font-weight: 200;
+}
+
+input{
+width: 150px;
+align-self: center;
+}
+
+.camp{
+  display: flex;
   gap: 1rem;
-  background-color: var(--amarillo);
-  padding: 1rem;
-  width:90%
+  justify-content: space-between;
+  width: 200px;
+}
+
+.types div{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.types div input{
+  margin: 0;
+  width: 30px;
 }

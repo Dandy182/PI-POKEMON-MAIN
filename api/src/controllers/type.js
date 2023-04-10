@@ -7,7 +7,7 @@ const getTypes = async () => {
   try{
 
     const api = await getDataApi();
-    const typesArrays = await api.map(p => p.types);
+    const typesArrays = await api.map(p => p.type);
     const typesList = await typesArrays.map(t => t.pop());
     
     typesList.forEach(t =>{

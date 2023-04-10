@@ -7,7 +7,7 @@ import '../css/cards.css';
 import Card from "./Card";
 import {useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { getAllPokemons, filterByOrigin, filterByOrder, filterByAtk, getTypes, filterByType} from '../actions';
+import { getAllPokemons, filterByOrigin, filterByOrder, filterByAtk, /*getTypes*/ filterByType} from '../actions';
 import { NavLink } from 'react-router-dom';
 import Page from './paginado';
 
@@ -16,7 +16,7 @@ export default function Home(){
 
     const dispatch = useDispatch();
     const allPokemons = useSelector((state) => state.pokemons)
-    const allTypes = useSelector((state) => state.types);
+    // const allTypes = useSelector((state) => state.types);
     // console.log(allPokemons)
     // console.log(allTypes)
     
@@ -158,7 +158,7 @@ export default function Home(){
                 return <NavLink to={`/detail/${p.name}`} className='link-card' key={p.id}>
                         <Card name={p.name}
                         img={p.img} 
-                        type={p.types}
+                        type={p.type}
                         />
                     </NavLink>
                 })

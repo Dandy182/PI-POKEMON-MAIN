@@ -23,7 +23,7 @@ const getDataApi = async () =>{
               height:pf.data.height,
               weight:pf.data.weight,
               createInDb:false,
-              types:pf.data.types.map((type) => type.type.name)
+              type:pf.data.types.map((type) => type.type.name)
       }));
     },);
 
