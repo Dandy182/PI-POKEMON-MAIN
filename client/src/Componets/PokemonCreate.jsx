@@ -10,10 +10,29 @@ import NewPokemon from "./CardCreate";
 
 
 
+
+const validate = (input) =>{
+  let error = {};
+
+  if(!input.name){
+    error.name =`This Pokémon has no name`;
+  }else if(!input.img){
+    error.img = `Pokemon without imagen, the image must be a link`
+  }else if(!error.hp){
+    error.hp =`Pokémon without life points`
+  }else if(!error.atk){
+    error.atk = `Pokémon without attack`
+  }
+
+  return error;
+}
+
+
+
 export default function PokemonCreate(){
   const history = useHistory();
   const dispatch = useDispatch();
-  const types = useSelector(state => state.types);
+  const [error, setError] = useState({})
 
   const [input, setInput] = useState({
     name:'',
@@ -35,6 +54,10 @@ export default function PokemonCreate(){
   const handleChange = (e) =>{
     e.preventDefault();
     setInput({...input, [e.target.name]:e.target.value})
+
+    setError(validate({
+      ...input, [e.target.name] : e.target.value
+    }))
   }
 
   const handleCheck = (e) =>{
@@ -47,11 +70,14 @@ export default function PokemonCreate(){
   }
 
   const handleCreate = (e) =>{
-    e.preventDefault()
-    console.log(input)
-    dispatch(postPokemon(input))
-    alert(`New Pokémon has been created`)
-    history.push('/home')
+
+    if(!error){
+      e.preventDefault()
+      console.log(input)
+      dispatch(postPokemon(input))
+      alert(`New Pokémon has been created`)
+      history.push('/home')
+    }
   }
 
   return(<div className="homePage">
@@ -61,22 +87,26 @@ export default function PokemonCreate(){
         <h1>CREATE NEW POKÉMON</h1>
   <div className="flex">
 
-  
     <form className="formulario" onSubmit={e => handleCreate(e)}>
       <div className="create__formulario"> 
       <div className="camp">
         <label htmlFor="name">Name:</label>
         <input type="text" name="name" value={input.name} onChange={e => handleChange(e)} placeholder="Input name" />
+        {
+          error.name && (alert(error.name))
+        }
       </div>
 
       <div className="camp">
         <label htmlFor="img">Image:</label>
         <input type="text" name="img" value={input.img} onChange={e => handleChange(e)}  placeholder="link image" />
+        {error.img && (alert(error.img))}
       </div>
 
       <div className="camp">
         <label htmlFor="hp">life:</label>
         <input type="number" name="hp" min={0} max={10000} value={input.hp} onChange={e => handleChange(e)} placeholder="life points" />
+        {error.hp &&(alert(error.hp))  }
       </div>
 
       <div className="camp">
@@ -193,7 +223,6 @@ export default function PokemonCreate(){
       
       </div>
       </div>
-
       <button type="submit">Create Pokéomon</button>
 
     </form>

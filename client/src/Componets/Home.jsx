@@ -155,7 +155,7 @@ export default function Home(){
         <main className="contenedor contenido__cards">
             {   pokemonsCurrent.map(p =>{
                 //console.log(p)
-                return <NavLink to={`/detail/${p.name}`} className='link-card' key={p.id}>
+                return <NavLink to={`/detail/${p.id}`} className='link-card' key={p.id}>
                         <Card name={p.name}
                         img={p.img} 
                         type={p.type ? p.type : p.types}

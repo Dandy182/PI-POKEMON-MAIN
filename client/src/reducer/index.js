@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { ADD_POKEMON, FILTER_ATK, FILTER_ORIGIN,  FILTER_TYPE,  GET_ALL, GET_POKEMON_BY_NAME, GET_TYPES, ORD_NAME } from '../types/index';
+import { ADD_POKEMON, FILTER_ATK, FILTER_ORIGIN,  FILTER_TYPE,  GET_ALL, GET_POKEMON_BY_ID, GET_POKEMON_BY_NAME, GET_TYPES, ORD_NAME } from '../types/index';
 
 
 
@@ -8,6 +8,7 @@ const initialState = {
   pokemons:[],
   allPokemons:[],
   types:[],
+  detail:[]
 }
 
 export default function rootReducer(state = initialState, action ){
@@ -31,6 +32,13 @@ export default function rootReducer(state = initialState, action ){
       return{
           ...state
         }
+
+    case GET_POKEMON_BY_ID:{
+      return{
+        ...state,
+        detail:action.payload
+      }
+    }
 
     case GET_POKEMON_BY_NAME:
         return{
