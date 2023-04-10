@@ -102,3 +102,6 @@ a .btn__landing:hover{
   color: var(--blanco);
 };
 
+.charge{
+  text-align: center;
+}
