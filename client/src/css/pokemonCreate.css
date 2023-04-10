@@ -1,0 +1,30 @@
+
+.createPokemon{
+  background-color: rgba(246, 247, 248, 0.266);
+  border-radius: 20px;
+  margin-top: 2rem;
+  padding: 1rem 0;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.formulario h1{
+  font-family: var(--otros__textos);
+}
+
+.camp{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:1rem;
+}
+
+
+.types{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  background-color: var(--amarillo);
+  padding: 1rem;
+  width:90%
+}

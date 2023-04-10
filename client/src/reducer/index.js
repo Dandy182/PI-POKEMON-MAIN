@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { ADD_POKEMON, FILTER_ATK, FILTER_ORIGIN,  GET_ALL, GET_POKEMON_BY_NAME, GET_TYPES, ORD_NAME } from '../types/index';
+import { ADD_POKEMON, FILTER_ATK, FILTER_ORIGIN,  FILTER_TYPE,  GET_ALL, GET_POKEMON_BY_NAME, GET_TYPES, ORD_NAME } from '../types/index';
 
 
 
@@ -32,7 +32,7 @@ export default function rootReducer(state = initialState, action ){
           ...state
         }
 
-      case GET_POKEMON_BY_NAME:
+    case GET_POKEMON_BY_NAME:
         return{
         ...state,
         pokemons:action.payload
@@ -69,7 +69,7 @@ export default function rootReducer(state = initialState, action ){
       return{
         ...state,
         pokemons: pkmnsOrdByName
-      }
+      }  
 
     case FILTER_ATK:
       let pkmnsOrdByAtk = action.payload === 'weak' ?
@@ -97,6 +97,15 @@ export default function rootReducer(state = initialState, action ){
         pokemons:pkmnsOrdByAtk
       }
 
+    case FILTER_TYPE:
+      let pType = state.allPokemons.filter(p => p.types.includes(action.payload))
+
+
+    return{
+      ...state,
+      pokemons:action.payload === 'all' ? state.allPokemons : pType
+
+    }
 
     default:
       return state;

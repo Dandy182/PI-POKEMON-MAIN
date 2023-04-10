@@ -2,6 +2,11 @@ import React, { useEffect, useState} from "react";
 import { Link, useHistory } from "react-router-dom";
 import { postPokemon, getTypes } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
+import '../index.css'
+import '../css/pokemonCreate.css'
+import UpperBar from "./upperBar";
+import Card from "./Card";
+
 
 
 
@@ -26,10 +31,13 @@ export default function PokemonCreate(){
     dispatch(getTypes())
   }, [])
 
-  return(<div className="pokemonCreate">
-    <h1>CREATE NEW POKÉMON</h1>
+  return(<div className="homePage">
+    <UpperBar />
+    <div className="contenedor createPokemon">
 
-    <form>
+    <form className="formulario">
+        <h1>CREATE NEW POKÉMON</h1>
+
       <div className="camp">
         <label htmlFor="name">Name:</label>
         <input type="text" name="name" value={input.name} placeholder="Input name" />
@@ -72,18 +80,26 @@ export default function PokemonCreate(){
 
       <div className="camp">
         <label htmlFor="types">Types:</label>
-        {
-          types.map((t, index) => {
-            return<label htmlFor="types">{t.name}</label>
-              
-          
-          })
-
-        }
+        <div className="types">
+            {
+              types.map((type, index) => {
+                
+                return <div key={index}>
+                  <p>{type.name}</p>
+                  <input type="checkbox" value={type.name} />
+                  </div>
+              })
+            }
+        </div>
       
       </div>
 
+    
+
+      <button type="submit">Create Pokéomon</button>
+
     </form>
+  </div>
   </div>)
 
 }

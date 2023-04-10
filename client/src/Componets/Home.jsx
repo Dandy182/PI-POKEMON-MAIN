@@ -7,7 +7,7 @@ import '../css/cards.css';
 import Card from "./Card";
 import {useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { getAllPokemons, filterByOrigin, filterByOrder, filterByAtk, getTypes} from '../actions';
+import { getAllPokemons, filterByOrigin, filterByOrder, filterByAtk, getTypes, filterByType} from '../actions';
 import { NavLink } from 'react-router-dom';
 import Page from './paginado';
 
@@ -16,13 +16,12 @@ export default function Home(){
 
     const dispatch = useDispatch();
     const allPokemons = useSelector((state) => state.pokemons)
-    //const allTypes = useSelector((state) => state.types);
-    console.log(allPokemons)
+    const allTypes = useSelector((state) => state.types);
+    // console.log(allPokemons)
     // console.log(allTypes)
     
     useEffect(() => {
         dispatch(getAllPokemons());
-        dispatch(getTypes())
     }, [dispatch])
 
     // eslint-disable-next-line no-unused-vars
@@ -67,9 +66,19 @@ export default function Home(){
     const handlefilterAtk = (e) =>{
         e.preventDefault();
         dispatch(filterByAtk(e.target.value));
-        setCurrentPage(1)
-        setOrder(`Order ${e.target.value}`)
+        setCurrentPage(1);
+        setOrder(`Order ${e.target.value}`);
     }
+
+    const handleFilterType = (e) =>{
+        e.preventDefault();
+        dispatch(filterByType(e.target.value));
+        setCurrentPage(1);
+        setOrder(`Order ${e.target.value}`)
+        //console.log(e.target.value)
+    }
+
+    
 
 
     return(<div className="homePage">
@@ -77,18 +86,43 @@ export default function Home(){
         <UpperBar />
         
          <div className="contenedor contenido__cards upperPanel">
+        <form className='filters'>
 
         <NavLink to='/create' className="newPkmn">
             Crear Pokémon
         </NavLink>
 
 
-        <form className='filters'>
             <div>
                 <label htmlFor="orderName">Order by Name: </label>
                 <select className='btn' name='orderName' onChange={e => handleOrderByName(e)}>
                     <option value='asc'>Ascending</option>
                     <option value='desc'>Descending</option>
+                </select>
+            </div>
+
+            <div>
+                <label htmlFor='type'>Filter By Type:</label>
+                <select className='btn' name='type' onChange={e => handleFilterType(e)} >
+                    <option value='all'>all</option>
+                    <option value="poison">poison</option>
+                    <option value="fire">fire</option>
+                    <option value="flying">flying</option>
+                    <option value="water">water</option>
+                    <option value="bug">bug</option>
+                    <option value="normal">normal</option>
+                    <option value="electric">electric</option>
+                    <option value="ground">ground</option>
+                    <option value="fairy">fairy</option>
+                    <option value="grass">grass</option>
+                    <option value="fighting">fighting</option>
+                    <option value="psychic">psychic</option>
+                    <option value="steel">steel</option>
+                    <option value="ice">ice</option>
+                    <option value="rock">rock</option>
+                    <option value="dragon">dragon</option>
+                    <option value="dark">dark</option>
+                    <option value="ghost">ghost</option>
                 </select>
             </div>
 

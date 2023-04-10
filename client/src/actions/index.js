@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADD_POKEMON, FILTER_ATK, FILTER_ORIGIN, GET_ALL, GET_POKEMON_BY_ID, GET_POKEMON_BY_NAME, GET_TYPES, ORD_NAME } from '../types';
+import { FILTER_ATK, FILTER_ORIGIN, FILTER_TYPE, GET_ALL, GET_POKEMON_BY_ID, GET_POKEMON_BY_NAME, GET_TYPES, ORD_NAME } from '../types';
 
 
 export const getAllPokemons = () =>{
@@ -88,3 +88,10 @@ export const filterByAtk = (payload) => {
     payload
   })
 }
+
+export const filterByType = (payload) =>{
+  return({
+    type:FILTER_TYPE,
+    payload
+  })
+} 

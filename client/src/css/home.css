@@ -51,12 +51,16 @@
 
 .filters{
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
 }
 
 @media only screen and (min-width:768px){
 
   .filters{
-    gap:1rem;
+    flex-direction: row;
+    gap:.5rem;
     align-items: center;
   }
 
