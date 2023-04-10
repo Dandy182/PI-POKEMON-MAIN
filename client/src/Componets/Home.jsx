@@ -153,7 +153,7 @@ export default function Home(){
         </div>
 
         <main className="contenedor contenido__cards">
-            {   pokemonsCurrent.map(p =>{
+            {   pokemonsCurrent.length > 0 ? pokemonsCurrent.map(p =>{
                 //console.log(p)
                 return <NavLink to={`/detail/${p.id}`} className='link-card' key={p.id}>
                         <Card name={p.name}
@@ -161,7 +161,7 @@ export default function Home(){
                         type={p.type ? p.type : p.types}
                         />
                     </NavLink>
-                })
+                }) : <p className='charge'>Loading..</p>
             }
         </main>
       

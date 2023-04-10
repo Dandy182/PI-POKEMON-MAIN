@@ -16,17 +16,19 @@ export default function PokemonDetail ({match}){
     
     useEffect(()=>{
         dispatch(getPokemonById(id));
-    },[dispatch]);
+    });
 
     return(<div className='pokemon__detail'>
         <UpperBar />
 
-        <div className="contenedor contenido__cards">
+        <div className="contenedor contenido__cards Dtl">
                 {
                     pokemon.length > 0 ? (<div className='pokemonDetail'>
                         <h1>{pokemon[0].name}</h1>
                         <div className='detailsData'>
-                            <img src={pokemon[0].img} alt={pokemon[0].name} />
+                            <div className='detailsImg'>
+                                <img src={pokemon[0].img} alt={pokemon[0].name} />
+                            </div>
                             <div className='detailsInfo'>
                                 <span>life: </span><p>{pokemon[0].hp}</p>
                                 <span>attack: </span><p>{pokemon[0].atk}</p>
