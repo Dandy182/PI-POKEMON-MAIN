@@ -7,7 +7,7 @@ const getDataApi = async () =>{
   
   try{
   
-  const callApi = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=150`);
+  const callApi = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=250`);
   const urlsApi = await callApi.data.results.map(p => p.url);
 
   await axios.all(urlsApi.map(urlApi => axios.get(urlApi)))

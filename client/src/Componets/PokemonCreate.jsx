@@ -11,21 +11,21 @@ import NewPokemon from "./CardCreate";
 
 
 
-const validate = (input) =>{
-  let error = {};
+// const validate = (input) =>{
+//   let error = {};
 
-  if(!input.name){
-    error.name =`This Pokémon has no name`;
-  }else if(!input.img){
-    error.img = `Pokemon without imagen, the image must be a link`
-  }else if(!error.hp){
-    error.hp =`Pokémon without life points`
-  }else if(!error.atk){
-    error.atk = `Pokémon without attack`
-  }
+//   if(!input.name){
+//     error.name =`This Pokémon has no name`;
+//   }else if(!input.img){
+//     error.img = `Pokemon without imagen, the image must be a link`
+//   }else if(!error.hp){
+//     error.hp =`Pokémon without life points`
+//   }else if(!error.atk){
+//     error.atk = `Pokémon without attack`
+//   }
 
-  return error;
-}
+//   return error;
+// }
 
 
 
@@ -227,7 +227,7 @@ export default function PokemonCreate(){
       <button type="submit">Create Pokéomon</button>
 
     </form>
-      <NewPokemon name={input.name} img={input.img} hp={input.hp} atk={input.atk} speed={input.speed} height={input.height} weight={input.weight}  type={input.type}/>
+      <NewPokemon name={input.name} img={input.img} hp={input.hp} def={input.def} atk={input.atk} speed={input.speed} height={input.height} weight={input.weight}  type={input.type}/>
   </div>
     
   </div>
