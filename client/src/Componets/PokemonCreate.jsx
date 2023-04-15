@@ -52,12 +52,13 @@ export default function PokemonCreate(){
 
 
   const handleChange = (e) =>{
+
     e.preventDefault();
     setInput({...input, [e.target.name]:e.target.value})
 
-    setError(validate({
-      ...input, [e.target.name] : e.target.value
-    }))
+    // setError(validate({
+    //   ...input, [e.target.name] : e.target.value
+    // }))
   }
 
   const handleCheck = (e) =>{
@@ -226,7 +227,7 @@ export default function PokemonCreate(){
       <button type="submit">Create Pokéomon</button>
 
     </form>
-      <NewPokemon name={input.name} img={input.img} hp={input.hp} atk={input.atk} def={input.def} speed={input.speed} height={input.height} weight={input.weight}  type={input.type}/>
+      <NewPokemon name={input.name} img={input.img} hp={input.hp} atk={input.atk} speed={input.speed} height={input.height} weight={input.weight}  type={input.type}/>
   </div>
     
   </div>
