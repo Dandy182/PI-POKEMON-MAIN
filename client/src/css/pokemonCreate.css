@@ -58,14 +58,13 @@ label{
 
 input{
 width: 150px;
-align-self: center;
 }
 
 .camp{
   display: flex;
   gap: 1rem;
-  justify-content: space-between;
-  width: 200px;
+  justify-content: center;
+  width: 100px;
 }
 
 .types div{

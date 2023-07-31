@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { postPokemon, getTypes } from "../actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import '../index.css'
 import '../css/pokemonCreate.css'
 import UpperBar from "./upperBar";
@@ -10,29 +10,10 @@ import NewPokemon from "./CardCreate";
 
 
 
-
-// const validate = (input) =>{
-//   let error = {};
-
-//   if(!input.name){
-//     error.name =`This Pokémon has no name`;
-//   }else if(!input.img){
-//     error.img = `Pokemon without imagen, the image must be a link`
-//   }else if(!error.hp){
-//     error.hp =`Pokémon without life points`
-//   }else if(!error.atk){
-//     error.atk = `Pokémon without attack`
-//   }
-
-//   return error;
-// }
-
-
-
 export default function PokemonCreate(){
   const history = useHistory();
   const dispatch = useDispatch();
-  const [error, setError] = useState({})
+  // const [error] = useState({})
 
   const [input, setInput] = useState({
     name:'',
@@ -48,7 +29,7 @@ export default function PokemonCreate(){
 
   useEffect(()=>{
     dispatch(getTypes())
-  },[])
+  },[dispatch])
 
 
   const handleChange = (e) =>{
@@ -72,13 +53,13 @@ export default function PokemonCreate(){
 
   const handleCreate = (e) =>{
 
-    if(!error){
+    // if(!error){
       e.preventDefault()
       console.log(input)
       dispatch(postPokemon(input))
       alert(`New Pokémon has been created`)
       history.push('/home')
-    }
+    // }
   }
 
   return(<div className="homePage">
@@ -93,21 +74,19 @@ export default function PokemonCreate(){
       <div className="camp">
         <label htmlFor="name">Name:</label>
         <input type="text" name="name" value={input.name} onChange={e => handleChange(e)} placeholder="Input name" />
-        {
-          error.name && (alert(error.name))
-        }
+        
       </div>
 
       <div className="camp">
         <label htmlFor="img">Image:</label>
         <input type="text" name="img" value={input.img} onChange={e => handleChange(e)}  placeholder="link image" />
-        {error.img && (alert(error.img))}
+        
       </div>
 
       <div className="camp">
         <label htmlFor="hp">life:</label>
         <input type="number" name="hp" min={0} max={10000} value={input.hp} onChange={e => handleChange(e)} placeholder="life points" />
-        {error.hp &&(alert(error.hp))  }
+        
       </div>
 
       <div className="camp">

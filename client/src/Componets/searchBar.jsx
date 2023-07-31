@@ -22,7 +22,7 @@ export default function Search(){
         setName("")
     }
 
-    //pendiente, revidar porqué el onChange no toma el ultimo caracter
+    //pendiente, revisar  porqué el onChange no toma el ultimo caracter
     return(<form className="searchBar"  onSubmit={(e) => handleClick(e)}>
         <input type="text" name="searchBar" className="bar" value={name} onChange={(e) => handleInputChange(e)}  placeholder="Search By Name"  />
         <button type='submit' >Search</button>
