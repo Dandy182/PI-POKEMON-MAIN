@@ -30,9 +30,7 @@ const  getDataApi = async () => {
                 });
 
             })
-            })
-
-            // console.log(pokemons)
+            });
         return pokemons;
 
 
@@ -42,16 +40,42 @@ const  getDataApi = async () => {
 }
 
 
-const infoDb = async () =>{
 
-    const pokemons = getDataApi();
+const pokemonsApiToDb = async () =>{
+
+    const pkmApi = await getDataApi();
+    const listPkmn = await pkmApi.map(p => p)
+    console.log(listPkmn[0])
+
+    for(let i = 0; i < listPkmn.length; i++){
+
+        let p = listPkmn[i];
+
+        await Pokemons.findOrCreate({
+                where:{name:p.name},
+                defaults:{
+                    name:p.name,
+                    img:p.img,
+                    hp:p.hp,
+                    atk:p.atk,
+                    def:p.def,
+                    speed:p.speed,
+                    height:p.height,
+                    weight:p.weight,
+                }
+        })
+
+        console.log(`pokemon ${p.name} added`)
+
+    }
 
 
 
 
+    
 }
 
-
+pokemonsApiToDb()
 
 
 
