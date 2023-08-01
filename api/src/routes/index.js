@@ -12,11 +12,10 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 
-router.get('/pokemon', async (req, res)=>{
+router.get('/pokemons', async (req, res)=>{
 
     try{
-
-        const data = getDataApi()
+        const data = await getDataApi()
         res.status(200).json(data)
     }catch(error){
         console.log(error)
